@@ -1,0 +1,7 @@
+// Basic REPL
+
+SET command = empty
+WHILE true:
+    OUTPUT "($)"
+    INPUT command
+    
