@@ -5,5 +5,10 @@ gen: $(SOURCES)
 	cd build
 	build/mesh.out
 
+pipe: $(SOURCES)
+	gcc $(SOURCES) -o 'build/mesh.out'
+	cd build
+	echo "/bin/ls" | 'build/mesh.out'
+
 about:
 	echo "MESH - Modern Exquisite SHell"
