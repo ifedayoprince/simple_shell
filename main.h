@@ -10,8 +10,7 @@
 
 #define MAX_STRING_LENGTH 256
 
-
-void boot_shell();
+void boot_shell(void);
 void execute_command(char command[]);
 
 #endif
