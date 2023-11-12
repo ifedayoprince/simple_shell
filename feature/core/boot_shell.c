@@ -2,17 +2,41 @@
 
 void boot_shell()
 {
-    char ch;
-    char *command = calloc(MAX_STRING_LENGTH, sizeof(char));
+	char *prompt = "($) ";
+	char ch;
+	int c = 0;
+	char *buffer = calloc(MAX_STRING_LENGTH, sizeof(char));
 
-    if (command == NULL)
-        return;
+	while (1)
+	{
 
-    while (true)
-    {
-        write(STDOUT_FILENO, "($) ", 4);
+		write(STDOUT_FILENO, prompt, strlen(prompt));
 
-        read(STDIN_FILENO, command, MAX_STRING_LENGTH);
-        execute_command(command);
-    }
+		while (read(STDIN_FILENO, &ch, 1) && ch != '\n')
+			buffer[c++] = ch;
+
+		buffer[c] = '\0';
+		execute_command(buffer);
+
+		free(buffer);
+		c = 0;
+		buffer = calloc(MAX_STRING_LENGTH, sizeof(char));
+	}
+}
+
+void execute_command(char *command)
+{
+	pid_t pid = fork();
+
+	if (pid == -1)
+		perror("[error] -> ");
+	else if (pid == 0)
+	{
+		char *ar[] = {command, NULL};
+		int subProc = execve(ar[0], ar, NULL);
+		if (subProc == -1)
+			perror("[error] -> ");
+	}
+	else
+		wait();
 }
