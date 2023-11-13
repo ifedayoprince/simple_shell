@@ -8,6 +8,11 @@
 #include <string.h>
 #include <stdio.h>
 
+/*
+ * File: main.h
+ * Auth: Ifedayo Oni, Muhammad Yusuf
+*/
+
 #define MAX_STRING_LENGTH 256
 
 void boot_shell(void);
