@@ -1,5 +1,5 @@
 /*
- * File: main.h
+ * File: main.c
  * Auth: Ifedayo Oni, Muhammad Yusuf
  */
 
@@ -8,12 +8,9 @@
 /**
  * main - entry function called when program loads.
  *
- * @argc: number of arguments passed to program
- * @argv: an array of arguments passed to program
- *
  * Return: the return number
  */
-int main(int argc, char **argv)
+int main(void)
 {
 	char buffer[MAX_STRING_LENGTH];
 

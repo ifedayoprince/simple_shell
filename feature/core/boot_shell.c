@@ -1,5 +1,5 @@
 /*
- * File: main.h
+ * File: boot_shell.c
  * Auth: Ifedayo Oni, Muhammad Yusuf
  */
 
@@ -50,12 +50,13 @@ void execute_command(char *command)
 		perror("[error] -> ");
 	else if (pid == 0)
 	{
-		char *ar[] = {command, NULL};
-		int subProc = execve(ar[0], ar, NULL);
+		char *argp[] =  {"", NULL};
+		
+		int subProc = execve(command, argp, NULL);
 
 		if (subProc == -1)
 			perror("[error] -> ");
 	}
 	else
-		wait();
+		wait(NULL);
 }
