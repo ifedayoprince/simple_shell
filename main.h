@@ -18,5 +18,8 @@
 
 void boot_shell(void);
 void execute_command(char command[]);
+ssize_t get_input(info_t *);
+int _getline(info_t *, char **, size_t *);
+void sigintHandler(int);
 
 #endif
